@@ -185,3 +185,20 @@ body, html {
 }
 
 .hidden { display: none !important; }
+#music-control {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000; 
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 8px;
+    border-radius: 50%;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+
+#music-control:hover {
+    transform: scale(1.1);
+}
