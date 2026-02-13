@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anılar Akvayrumu ❤︎</title>
+    <title>Anılar Akvaryumu ❤︎</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<audio id="bg-music" loop>
+    <source src="image/music.mp3" type="audio/mpeg">
+</audio>
+
 <div id="phone-wrapper" onclick="handleWrapperClick(event)">
     <div id="line"></div>
     <img src="image/hook.png" id="hook">
+
+    <div id="music-control" onclick="toggleMusic(event)">🔊</div>
 
     <div id="start-screen" class="overlay">
         <p>Sana gerçek bir akvaryum almak isterdim ama mesafeler buna izin vermedi... <br>
@@ -47,27 +53,16 @@
 <script>
     const memories = [
     {src: "image/image1.jpeg", note: "İlk fotoğrafımız, ilk heyecanımız... Kim bilebilirdi ki bu hikayenin buralara geleceğini. Kalbimin ilk ve son durağı olduğun için teşekkür ederim sevgilim. ❤️✨"},
-    
     {src: "image/image2.jpeg", note: "Cumhuriyetimizin 100. yılı, bizim ise ilk 29 Ekimimiz... İlk konserimiz... Bundan sonraki tüm 29 Ekimlerde daha da güzel anılar bırakmak dileğiyle. Seninle her kutlama bir bayram tadında, iyi ki varsın. 🥰"},
-    
-    {src: "image/image3.jpeg", note: "Hani bana bazen öyle bir bakıyorsun ya... İşte o an dünya sessize alınıyor. Beni ne kadar çok sevdiğini sadece o bakışından anlıyorum. Dünyadaki en güvenli sığınağım senin bakışların, seni çok seviyorum. 😍💖"},
-    
-    {src: "image/image4.jpeg", note: "Beraberken ne güzel başarılara imza attık. Bu zaferleri ve 'biz' olmanın gücünü gelecekte çocuklarımıza gururla anlatacağız. Sen benim hayat boyu sürecek en büyük başarımsın. 🧿🌟"},
-    
-    {src: "image/image5.jpeg", note: "Tarihi yolculuklara çıkıp beraber padişah da olduk! Koskoca cihanı değil, biz en çok birbirimizin kalbini yönetmeyi sevdik. Her şey seninle güzel sevgilim. 👑🧡"},
-    
+    {src: "image/image3.jpeg", note: "Hani bana bazen öyle bir bakıyorsun ya... İşte o zaman kalbim öyle tatlı hissediyor ki . Beni ne kadar çok sevdiğini sadece o bakışından anlayabiliyorum. Dünyadaki en güvenli yer sanki senin o bakışların, seni çok seviyorum. 😍💖"},
+    {src: "image/image4.jpeg", note: "Beraberken ne güzel başarılara imza attık. Bu zaferleri ve 'biz' olmanın gücünü gelecekte çocuklarımıza gururla anlatacağız. Sen benim hayatımdaki en tatlı iyikimsin. 🧿🌟"},
+    {src: "image/image5.jpeg", note: "Tarihi yolculuklara çıkıp beraber Kanuni ve Hürrem de olduk! Osmanlıya olamadık belki ama kalbinin Sultanı olmak bana yetti. Her şey seninle güzel sevgilim. 👑🧡"},
     {src: "image/image6.jpeg", note: "Cumhuriyet alayına da katıldık, 101. yılına da el ele girdik. Bir ömür boyu böyle el ele, nicelerine... 🤝🔥"},
-    
     {src: "image/image7.jpeg", note: "Bana yaptığın o sürprizi hala unutamıyorum... O merdivenleri çıkarkenki heyecanım, kalbimin atışı hala capcanlı. Bana her gün yeni bir heyecan kattığın için iyi ki sen. 🎁✨"},
-    
     {src: "image/image8.jpeg", note: "Galata’ya da gittik seninle... Evet, tepesine çıkamadık ama o meşhur rivayete inat biz başaracağız, ben bize sonuna kadar inanıyorum.🗼💜"},
-    
     {src: "image/image9.jpeg", note: "Bu fotoğrafı çok seviyorum, eklemeden duramadım. Hem İstanbul'a gelmişken simit yemeden olur muydu? En basit anları bile bir masala çeviren senin varlığın, seni çok seviyorum. 🥯🌊❤️"},
-    
-    {src: "image/image10.jpeg", note: "O meşhur patlıcanlı böreği yiyemesek de Adaları seninle gezmek çok güzeldi. Ama unutmadım o böreği yiyeceğiz beyefendi. Hayat yolculuğunda hep yanyana... 🚲💙"},
-    
-    {src: "image/image11.jpeg", note: "Beraber küçük bir kaza da yaptık ama günün sonunda gülüp 'olsun' demeyi de başardık. Her anlamda unutulmaz bir maceraydı. Başımıza ne gelirse gelsin, seninle her şeye 'olsun' diyebilirim. 🏍️🌈"},
-    
+    {src: "image/image10.jpeg", note: "O meşhur patlıcanlı böreği yiyemesek de Adalar'ı seninle gezmek çok güzeldi. Ama unutmadım o böreği yiyeceğiz beyefendi... 🚲💙"},
+    {src: "image/image11.jpeg", note: "Beraber küçük bir kaza da yaptık ama günün sonunda gülüp 'olsun' demeyi de başardık. Her anlamda unutulmaz bir maceraydı. Başımıza ne gelirse gelsin, seninle her şeye 'olsun' diyebilirim. 🏍️❄️"},
     {src: "image/image12.jpeg", note: "Mezuniyetimiz... Bazı şeylerin bitişi ama asıl büyük hikayemizin başlangıcı. Diplomamızı beraber aldık, şimdi sıra seninle yaşanacak tüm o güzel yıllarda. Ömrümün geri kalanına eşlik edecek en güzel şey sensin. 🎓📜👩‍❤️‍👨"}
 ];
 
@@ -77,6 +72,11 @@
 
     function startGame(e) {
         e.stopPropagation();
+
+        // 2. MÜZİĞİ BAŞLATAN KODU EKLEDİK
+        const music = document.getElementById('bg-music');
+        music.play().catch(error => console.log("Müzik için etkileşim bekleniyor."));
+
         document.getElementById('start-screen').classList.add('hidden');
         spawnHeartsGrid();
         gameStarted = true;
@@ -169,7 +169,8 @@
         document.getElementById('photo-display').style.display = 'none';
         resetHook();
         
-        if (document.querySelectorAll('.heart:not([style*="display: none"])').length === 0) {
+        const remainingHearts = document.querySelectorAll('.heart:not([style*="display: none"])');
+        if (remainingHearts.length === 0) {
             document.getElementById('final-screen').classList.remove('hidden');
         }
     }
@@ -270,17 +271,23 @@
     });
     observer.observe(finalScreen, { attributes: true });
 
-    function closePhoto(e) {
-        e.stopPropagation();
-        document.getElementById('photo-display').style.display = 'none';
-        resetHook();
-        
-        const remainingHearts = document.querySelectorAll('.heart:not([style*="display: none"])');
-        if (remainingHearts.length === 0) {
-            document.getElementById('final-screen').classList.remove('hidden');
-        }
+    function toggleMusic(e) {
+    e.stopPropagation(); // Tıklamanın kancayı hareket ettirmesini engeller
+    const music = document.getElementById('bg-music');
+    const icon = document.getElementById('music-control');
+
+    if (music.paused) {
+        music.play();
+        icon.innerText = "🔊";
+        icon.style.opacity = "1";
+    } else {
+        music.pause();
+        icon.innerText = "🔇";
+        icon.style.opacity = "0.7";
     }
+}
+
 </script>
 </body>
-
 </html>
+
