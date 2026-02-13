@@ -16,12 +16,12 @@
     <div id="line"></div>
     <img src="image/hook.png" id="hook">
 
-    <div id="music-control" onclick="toggleMusic(event)">🔊</div>
+    <div id="music-control" onclick="toggleMusic(event)" style="position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; z-index: 1000; background: rgba(255,255,255,0.3); border-radius: 50%; padding: 5px; display: none;">🔊</div>
 
     <div id="start-screen" class="overlay">
         <p>Sana gerçek bir akvaryum almak isterdim ama mesafeler buna izin vermedi... <br>
         Bende sana içine anılarımızı sakladığım <b>dijital bir akvaryum</b> yaptım. ❤️ <br><br>
-        Hadi, tüm kalpleri yakala ve ödülünü al! (Sesi açmayı unutma!) 🎁</p>
+        Hadi, tüm kalpleri yakala ve ödülünü al! 🎁</p>
         <button class="pink-btn" onclick="startGame(event)">Oynamaya Başla ❤︎</button>
     </div>
 
@@ -32,7 +32,8 @@
     </div>
 
     <div id="final-screen" class="overlay hidden">
-        <canvas id="fireworksCanvas"></canvas> <div class="cake-container">
+        <canvas id="fireworksCanvas"></canvas> 
+        <div class="cake-container">
             <div class="cake-wrapper">
                 <div class="candles-on-top">
                     <div class="candle"><div class="flame"></div><div class="candle-stick"></div></div>
@@ -47,36 +48,34 @@
             <p>Yüzlerce anı, anlatmak istediğim onlarca hikaye olsa da bugünlük sadece bazılarını seçebildim... Ama her şeye rağmen iyi ki yan yanayız ve bundan sonra da bir ömür el ele devam ederiz inşallah bitanem. Şimdiye kadarki en güzel yaşın olması dileğiyle; seni dünyalar kadar çok seviyorum. İyi ki doğdun!</p>
             <span class="heart-icon">❤︎</span>
         </div>
-        <button class="pink-btn" onclick="location.reload()">Başa Dön (yada Boşver Beni Ara) </button>
+        <button class="pink-btn" onclick="location.reload()">Başa Dön</button>
     </div>
 
 <script>
     const memories = [
-    {src: "image/image1.jpeg", note: "İlk fotoğrafımız, ilk heyecanımız... Kim bilebilirdi ki bu hikayenin buralara geleceğini. Kalbimin ilk ve son durağı olduğun için teşekkür ederim sevgilim. ❤️✨"},
-    {src: "image/image2.jpeg", note: "Cumhuriyetimizin 100. yılı, bizim ise ilk 29 Ekimimiz... İlk konserimiz... Bundan sonraki tüm 29 Ekimlerde daha da güzel anılar bırakmak dileğiyle. Seninle her kutlama bir bayram tadında, iyi ki varsın. 🫀"},
-    {src: "image/image3.jpeg", note: "Hani bana bazen öyle bir bakıyorsun ya... İşte o zaman kalbim öyle tatlı hissediyor ki. Beni ne kadar çok sevdiğini sadece o bakışından anlayabiliyorum. Seni çok seviyorum hayatım. 😍💖"},
-    {src: "image/image4.jpeg", note: "Beraberken ne güzel başarılara imza attık. Bu zaferleri ve 'biz' olmanın gücünü gelecekte çocuklarımıza gururla anlatacağız. Sen benim hayatımdaki en tatlı iyikimsin. 🧿🌟"},
-    {src: "image/image5.jpeg", note: "Tarihi yolculuklara çıkıp beraber Kanuni ve Hürrem de olduk! Osmanlı'nın Sultanı olamadık belki ama kalbinin Sultanı olmak bana yetti. Her şey seninle güzel sevgilim. 👑🧡"},
-    {src: "image/image6.jpeg", note: "Cumhuriyet alayına da katıldık, 101. yılına da el ele girdik. Bir ömür boyu böyle el ele, nicelerine... 💝"},
-    {src: "image/image7.jpeg", note: "Bana yaptığın o sürprizi hala unutamıyorum... O merdivenleri çıkarkenki heyecanım, kalbimin atışı hala capcanlı. Bana her gün yeni bir heyecan kattığın için iyi ki sen. 🎁✨"},
-    {src: "image/image8.jpeg", note: "Galata’ya da gittik seninle... Evet, tepesine çıkamadık ama o meşhur rivayete inat biz başaracağız, ben bize sonuna kadar inanıyorum.💜"},
-    {src: "image/image9.jpeg", note: "Bu fotoğrafı çok seviyorum, eklemeden duramadım. Hem İstanbul'a gelmişken simit yemeden olur muydu? En basit anları bile bir masala çeviren senin varlığın, seni çok seviyorum. 🥯🌊❤️"},
-    {src: "image/image10.jpeg", note: "O meşhur patlıcanlı böreği yiyemesek de Adalar'ı seninle gezmek çok güzeldi. Ama unutmadım o böreği yiyeceğiz beyefendi... 🚲💙"},
-    {src: "image/image11.jpeg", note: "Beraber küçük bir kaza da yaptık ama günün sonunda gülüp 'olsun' demeyi de başardık. Her anlamda unutulmaz bir maceraydı. Başımıza ne gelirse gelsin, seninle her şeye 'olsun' diyebilirim. 🏍️❄️"},
-    {src: "image/image12.jpeg", note: "Mezuniyetimiz... Bazı şeylerin bitişi ama asıl büyük hikayemizin başlangıcı. Diplomamızı beraber aldık, şimdi sıra seninle yaşanacak tüm o güzel yıllarda. Ömrümün geri kalanına eşlik edecek en güzel şey sensin. 🎓📜👩‍❤️‍👨"}
-];
+        {src: "image/image1.jpeg", note: "İlk fotoğrafımız, ilk heyecanımız... Kim bilebilirdi ki bu hikayenin buralara geleceğini. Kalbimin ilk ve son durağı olduğun için teşekkür ederim sevgilim. ❤️✨"},
+        {src: "image/image2.jpeg", note: "Cumhuriyetimizin 100. yılı, bizim ise ilk 29 Ekimimiz... İlk konserimiz... Bundan sonraki tüm 29 Ekimlerde daha da güzel anılar bırakmak dileğiyle. Seninle her kutlama bir bayram tadında, iyi ki varsın. 🥰"},
+        {src: "image/image3.jpeg", note: "Hani bana bazen öyle bir bakıyorsun ya... İşte o zaman kalbim öyle tatlı hissediyor ki . Beni ne kadar çok sevdiğini sadece o bakışından anlayabiliyorum. Dünyadaki en güvenli yer sanki senin o bakışların, seni çok seviyorum. 😍💖"},
+        {src: "image/image4.jpeg", note: "Beraberken ne güzel başarılara imza attık. Bu zaferleri ve 'biz' olmanın gücünü gelecekte çocuklarımıza gururla anlatacağız. Sen benim hayatımdaki en tatlı iyikimsin. 🧿🌟"},
+        {src: "image/image5.jpeg", note: "Tarihi yolculuklara çıkıp beraber Kanuni ve Hürrem de olduk! Osmanlıya olamadık belki ama kalbinin Sultanı olmak bana yetti. Her şey seninle güzel sevgilim. 👑🧡"},
+        {src: "image/image6.jpeg", note: "Cumhuriyet alayına da katıldık, 101. yılına da el ele girdik. Bir ömür boyu böyle el ele, nicelerine... 🤝🔥"},
+        {src: "image/image7.jpeg", note: "Bana yaptığın o sürprizi hala unutamıyorum... O merdivenleri çıkarkenki heyecanım, kalbimin atışı hala capcanlı. Bana her gün yeni bir heyecan kattığın için iyi ki sen. 🎁✨"},
+        {src: "image/image8.jpeg", note: "Galata’ya da gittik seninle... Evet, tepesine çıkamadık ama o meşhur rivayete inat biz başaracağız, ben bize sonuna kadar inanıyorum.🗼💜"},
+        {src: "image/image9.jpeg", note: "Bu fotoğrafı çok seviyorum, eklemeden duramadım. Hem İstanbul'a gelmişken simit yemeden olur muydu? En basit anları bile bir masala çeviren senin varlığın, seni çok seviyorum. 🥯🌊❤️"},
+        {src: "image/image10.jpeg", note: "O meşhur patlıcanlı böreği yiyemesek de Adalar'ı seninle gezmek çok güzeldi. Ama unutmadım o böreği yiyeceğiz beyefendi... 🚲💙"},
+        {src: "image/image11.jpeg", note: "Beraber küçük bir kaza da yaptık ama günün sonunda gülüp 'olsun' demeyi de başardık. Her anlamda unutulmaz bir maceraydı. Başımıza ne gelirse gelsin, seninle her şeye 'olsun' diyebilirim. 🏍️❄️"},
+        {src: "image/image12.jpeg", note: "Mezuniyetimiz... Bazı şeylerin bitişi ama asıl büyük hikayemizin başlangıcı. Diplomamızı beraber aldık, şimdi sıra seninle yaşanacak tüm o güzel yıllarda. Ömrümün geri kalanına eşlik edecek en güzel şey sensin. 🎓📜👩‍❤️‍👨"}
+    ];
 
-    let count = 0;
     let gameStarted = false;
     let isMoving = false;
 
     function startGame(e) {
         e.stopPropagation();
-
-        // 2. MÜZİĞİ BAŞLATAN KODU EKLEDİK
         const music = document.getElementById('bg-music');
         music.play().catch(error => console.log("Müzik için etkileşim bekleniyor."));
 
+        document.getElementById('music-control').style.display = 'block';
         document.getElementById('start-screen').classList.add('hidden');
         spawnHeartsGrid();
         gameStarted = true;
@@ -92,11 +91,12 @@
         }
         positions.sort(() => Math.random() - 0.5);
 
-        for (let i = 1; i <= 12; i++) {
+        for (let i = 0; i < 12; i++) {
             const h = document.createElement('img');
-            h.src = `image/heart${i}.png`; 
+            h.src = `image/heart${i+1}.png`; 
             h.className = 'heart';
-            const pos = positions[i-1];
+            h.setAttribute('data-id', i); 
+            const pos = positions[i];
             h.style.left = pos.x + '%';
             h.style.top = pos.y + '%';
             h.style.pointerEvents = 'none';
@@ -129,23 +129,25 @@
     function checkCollision(x, y) {
         const hearts = Array.from(document.querySelectorAll('.heart')).filter(h => h.style.display !== 'none');
         let caughtHeart = null;
+        let minDistance = 999;
 
         hearts.forEach(h => {
             const hX = parseFloat(h.style.left);
             const hY = parseFloat(h.style.top);
             const dist = Math.sqrt(Math.pow(x - hX, 2) + Math.pow(y - hY, 2));
             
-            if (dist < 20) { 
+            if (dist < 15 && dist < minDistance) { 
+                minDistance = dist;
                 caughtHeart = h;
             }
         });
 
         if (caughtHeart) {
+            const memoryIndex = caughtHeart.getAttribute('data-id');
             caughtHeart.style.display = 'none';
-            document.getElementById('target-img').src = memories[count].src;
-            document.getElementById('romantic-note').innerText = memories[count].note;
+            document.getElementById('target-img').src = memories[memoryIndex].src;
+            document.getElementById('romantic-note').innerText = memories[memoryIndex].note;
             document.getElementById('photo-display').style.display = 'flex';
-            count++;
             isMoving = false;
         } else {
             setTimeout(() => {
@@ -175,6 +177,19 @@
         }
     }
 
+    function toggleMusic(e) {
+        e.stopPropagation();
+        const music = document.getElementById('bg-music');
+        const icon = document.getElementById('music-control');
+        if (music.paused) {
+            music.play();
+            icon.innerText = "🔊";
+        } else {
+            music.pause();
+            icon.innerText = "🔇";
+        }
+    }
+
     const fireworksCanvas = document.getElementById('fireworksCanvas');
     const ctx = fireworksCanvas.getContext('2d');
     let particles = [];
@@ -188,108 +203,54 @@
     resizeCanvas(); 
 
     function createParticle(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.velocity = {
-            x: Math.random() * 6 - 3,
-            y: Math.random() * 6 - 3
-        };
-        this.alpha = 1;
-        this.gravity = 0.05;
-        this.friction = 0.99;
+        this.x = x; this.y = y; this.color = color;
+        this.velocity = { x: Math.random() * 6 - 3, y: Math.random() * 6 - 3 };
+        this.alpha = 1; this.gravity = 0.05; this.friction = 0.99;
     }
 
     createParticle.prototype.draw = function() {
-        ctx.save();
-        ctx.globalAlpha = this.alpha;
-        ctx.beginPath();
+        ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
         ctx.arc(this.x, this.y, 2, 0, Math.PI * 2, false);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.restore();
+        ctx.fillStyle = this.color; ctx.fill(); ctx.restore();
     };
 
     createParticle.prototype.update = function() {
-        this.velocity.x *= this.friction;
-        this.velocity.y *= this.friction;
-        this.velocity.y += this.gravity;
-        this.x += this.velocity.x;
-        this.y += this.velocity.y;
-        this.alpha -= 0.01;
-        if (this.alpha <= 0) {
-            this.alpha = 0;
-        }
+        this.velocity.x *= this.friction; this.velocity.y *= this.friction;
+        this.velocity.y += this.gravity; this.x += this.velocity.x; this.y += this.velocity.y;
+        this.alpha -= 0.01; if (this.alpha <= 0) this.alpha = 0;
         this.draw();
     };
 
     function animateFireworks() {
         requestAnimationFrame(animateFireworks);
         ctx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
-
-        particles.forEach((particle, i) => {
-            if (particle.alpha > 0) {
-                particle.update();
-            } else {
-                particles.splice(i, 1);
-            }
-        });
+        particles.forEach((p, i) => { if (p.alpha > 0) p.update(); else particles.splice(i, 1); });
     }
 
     function createExplosion(x, y) {
-        const particleCount = 50;
         const color = colors[Math.floor(Math.random() * colors.length)];
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new createParticle(x, y, color));
-        }
-    }
-
-    function startFireworks() {
-        if (!fireworksInterval) { 
-            fireworksInterval = setInterval(() => {
-                const x = Math.random() * fireworksCanvas.width;
-                const y = Math.random() * (fireworksCanvas.height * 0.7); 
-                createExplosion(x, y);
-            }, 500);
-        }
-        animateFireworks();
+        for (let i = 0; i < 50; i++) particles.push(new createParticle(x, y, color));
     }
 
     let fireworksInterval = null; 
     const finalScreen = document.getElementById('final-screen');
     const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.attributeName === 'class' && !finalScreen.classList.contains('hidden')) {
-                startFireworks();
-            } else if (mutation.attributeName === 'class' && finalScreen.classList.contains('hidden')) {
-                clearInterval(fireworksInterval);
-                fireworksInterval = null;
-                particles = []; 
-                ctx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+        mutations.forEach(m => {
+            if (m.attributeName === 'class' && !finalScreen.classList.contains('hidden')) {
+                if (!fireworksInterval) {
+                    fireworksInterval = setInterval(() => {
+                        createExplosion(Math.random() * fireworksCanvas.width, Math.random() * (fireworksCanvas.height * 0.7));
+                    }, 500);
+                    animateFireworks();
+                }
             }
         });
     });
     observer.observe(finalScreen, { attributes: true });
-
-    function toggleMusic(e) {
-    e.stopPropagation(); // Tıklamanın kancayı hareket ettirmesini engeller
-    const music = document.getElementById('bg-music');
-    const icon = document.getElementById('music-control');
-
-    if (music.paused) {
-        music.play();
-        icon.innerText = "🔊";
-        icon.style.opacity = "1";
-    } else {
-        music.pause();
-        icon.innerText = "🔇";
-        icon.style.opacity = "0.7";
-    }
-}
-
 </script>
 </body>
 </html>
+
 
 
 
